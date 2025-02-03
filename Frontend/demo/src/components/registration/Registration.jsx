@@ -8,17 +8,6 @@ function Registration() {
 
     var [state, setState] = useState({username:"", password:"" , email:"", fullname:""})
 
-    const [response, setResponse ] =  useState("---");
-
-    useEffect(()=>{
-
-        axios.get("http://localhost:8888/user/getuser").then((res)=>{
-
-            setResponse(res);
-
-        }).catch((err)=>{})
-    });
-
     function fnpost() {
 
         if(document.querySelector("#username").value==="") {
@@ -87,7 +76,7 @@ function Registration() {
 
     <div id="maindiv">
 
-        <h2>Registration:{response}</h2>
+        <h2>Registration</h2>
         <lable>Username:</lable> <br/>
         <input id="username" required type="text"/> <br/> <br/>
 
