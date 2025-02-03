@@ -6,7 +6,7 @@ var userRoute = require("./routes/users.js");
 const cors = require("cors")
 
 
-
+app.use(cors());
 
 app.use(express.json());
 
@@ -16,12 +16,7 @@ app.use("/user", userRoute)
 
 
 
-app.use(cors({
-    origin: "http://localhost:5174", // Replace with your frontend URL
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true, // If you need to send cookies or authentication headers
-}));
+
 
 
 
