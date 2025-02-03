@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+
+
+    </head>
+
+    <body>
+
+        <script>
+            
+            function fnpost() {
+
+                fetch("http://localhost:8888/user/postuser",{
+
+                    method:"post",
+                    body:JSON.stringify({username:"rohan", password:"sindura", email:"rohanpatil@gmail.com", name:"rohan"}),
+
+                }).then((res)=>{alert("working")}).catch((err)=>{alert(err)})
+            }
+
+        </script>
+
+        <button onclick="fnpost()">click</button>
+
+
+    </body>
+
+
+</html>
