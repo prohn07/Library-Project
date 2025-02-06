@@ -2,30 +2,56 @@ var express = require("express");
 
 var userModel = require("../model/usermodel.js")
 
+var jwt = require("jsonwebtoken")
+
+var secretkey = "qwerty";
+
+var loginuserMiddleware = require("../middleware/loginuserMiddleware.js")
+
 var route = express.Router();
 
 
-route.post("/postuser", async (req, res)=>{
+route.post("/newuser", async (req, res)=>{
 
-       var newUser = req.body;
+       try{
 
-       var newuser = new userModel(newUser);
+              var newUser = req.body;
 
-       await newuser.save();
+              var newuser = new userModel(newUser);
+       
+              await newuser.save();
+       
+              res.json({
+               ok:true,
+               result:"New user registered successfully"
+              })
 
-       res.json({
-        ok:true,
-        result:"New user registered successfully"
-       })
+       }catch(error){
+
+              res.json({
+                     ok:false,
+                     result:error.message
+                    })
+
+       }
+
+      
 
 });
 
-route.get("/getuser",(req,res)=>{
+route.post("/loginuser",loginuserMiddleware, async (req,res)=>{
 
-       res.send("success");
+       var user = req.body
 
+      var token = jwt.sign(user, secretkey);
+
+      res.json({
+       ok:true,
+       result:"User Successfully Logged In",
+       token:token
+      })
 
 })
 
-module.exports = route;
+module.exports = {route, secretkey};
 

@@ -2,17 +2,22 @@
 var express = require("express");
 var app = express();
 require("./config/mongooseconnect.js")
-var userRoute = require("./routes/users.js");
-const cors = require("cors")
+var {route} = require("./routes/users.js");
+const cors = require("cors");
+var bookRoute = require("./routes/books.js")
+
 
 
 app.use(cors());
 
 app.use(express.json());
 
-app.use("/user", userRoute)
+app.use("/user", route);
 
-//rohan
+app.use("/book", bookRoute);
+
+
+
 
 
 

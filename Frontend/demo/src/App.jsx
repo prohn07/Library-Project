@@ -1,23 +1,21 @@
 
 import React from 'react'
-import { Routes, Route } from 'react-router-dom'
-import Login from './components/login/Login'
-import Registration from './components/registration/Registration'
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import Routing from './Route/Routing.JSX';
+
+
+
 
 function App() {
 
+  
+
   return (
 
-   
-
     <div>
- 
-      <Routes>
 
-        <Route path={"/"} element={<Login/>} />
-        <Route path={"/registration"} element={<Registration/>} />
-
-      </Routes>
+      <Routing/>      
       
     </div>
   )

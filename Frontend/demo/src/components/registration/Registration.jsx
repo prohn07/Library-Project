@@ -8,6 +8,13 @@ function Registration() {
 
     var [state, setState] = useState({username:"", password:"" , email:"", fullname:""})
 
+    useEffect(()=>{
+
+        localStorage.removeItem("token"); 
+        
+    
+      });
+
     function fnpost() {
 
         if(document.querySelector("#username").value==="") {
@@ -44,9 +51,9 @@ function Registration() {
                         }
 
                        
-                        axios.post("http://localhost:8888/user/postuser", data).then((res)=>{
+                        axios.post("http://localhost:8888/user/newuser", data).then((res)=>{
                             
-                                alert(res.result)
+                                alert(res.data.result)
                             
                         }).catch((err)=>{
 
@@ -74,24 +81,24 @@ function Registration() {
 
   return (
 
-    <div id="maindiv">
+    <div id="Registrationmaindiv" className='w-25 shadow p-4'>
 
-        <h2>Registration</h2>
-        <lable>Username:</lable> <br/>
-        <input id="username" required type="text"/> <br/> <br/>
+        <h2>Registration</h2><br/>
+        <label>Username:</label> <br/>
+        <input className='form-control' id="username" required type="text"/> <br/>
 
-        <lable>Password:</lable> <br/>
-        <input id="password" required type="password" /> <br/> <br/>
+        <label>Password:</label> <br/>
+        <input className='form-control' id="password" required type="password" /> <br/>
 
-        <lable>Email:</lable> <br/>
-        <input id="email" required type="email" /> <br/> <br/>
+        <label>Email:</label> <br/>
+        <input className='form-control' id="email" required type="email" /> <br/>
 
-        <lable>Full Name:</lable> <br/>
-        <input id="name" required type="text" /> <br/> <br/>
+        <label>Full Name:</label> <br/>
+        <input className='form-control' id="name" required type="text" /> <br/>
 
         <div style={{textAlign:"center"}}>
-            <button onClick={fnpost}>Register</button> <br/> <br/>
-            <Link to="/">Already have an account?Login here</Link>
+            <button className="btn btn-primary w-100" onClick={fnpost}>Register</button> <br/><br/>
+            <Link to="/"><h5 className='link'>Already have an account?Login here</h5></Link>
         
         </div>
         
