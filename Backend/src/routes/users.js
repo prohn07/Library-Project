@@ -1,10 +1,10 @@
 var express = require("express");
 
-var userModel = require("../model/usermodel.js")
+var userModel = require("../model/usermodel.js");
 
-var jwt = require("jsonwebtoken")
+var jwt = require("jsonwebtoken");
 
-var secretkey = "qwerty"
+var secretkey = "qwerty";
 
 var key = "rohan";
 
@@ -13,55 +13,40 @@ const bookMiddleware = require("../middleware/bookMiddleware.js");
 
 var route = express.Router();
 
+route.post("/newuser", async (req, res) => {
+  try {
+    var newUser = req.body;
 
-route.post("/newuser", async (req, res)=>{
+    var newuser = new userModel(newUser);
 
-       try{
+    await newuser.save();
 
-              var newUser = req.body;
-
-              var newuser = new userModel(newUser);
-       
-              await newuser.save();
-       
-              res.json({
-               ok:true,
-               result:"New user registered successfully"
-              })
-
-       }catch(error){
-
-              res.json({
-                     ok:false,
-                     result:error.message
-                    })
-
-       }
-
-      
-
+    res.json({
+      ok: true,
+      result: "New user registered successfully",
+    });
+  } catch (error) {
+    res.json({
+      ok: false,
+      result: error.message,
+    });
+  }
 });
 
-route.post("/loginuser",loginuserMiddleware, async (req,res)=>{
+route.post("/loginuser", loginuserMiddleware, async (req, res) => {
+  var user = req.body;
 
-       var user = req.body
+  var token = jwt.sign(user, secretkey);
 
-      var token = jwt.sign(user, secretkey);
+  res.json({
+    ok: true,
+    result: "User Successfully Logged In",
+    token: token,
+  });
+});
 
-      res.json({
-       ok:true,
-       result:"User Successfully Logged In",
-       token:token
-      })
+route.get("/authenticate", bookMiddleware, (req, res) => {
+  res.send("success");
+});
 
-})
-
-route.get("/authenticate",bookMiddleware,  (req,res)=>{
-
-       res.send("success");
-
-
-})
-
-module.exports = {route, key}
-
+module.exports = { route, key };

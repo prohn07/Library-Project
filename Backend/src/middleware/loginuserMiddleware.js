@@ -1,26 +1,18 @@
-var userModel = require("../model/usermodel")
+var userModel = require("../model/usermodel");
 
 async function loginuserMiddleware(req, res, next) {
+  var data = req.body;
 
-    var data = req.body;
+  var output = await userModel.find(data);
 
-    var output = await userModel.find(data);
+  if (output.length > 0) {
+    next();
+  } else {
+    res.send({
+      ok: false,
+      result: "Please enter correct credentials",
+    });
+  }
+}
 
-    if(output.length>0) {
-
-       next();
-
-    }else {
-
-      res.send({
-
-             ok:false,
-             result:"Please enter correct credentials"
-    })
-    
-    }
-
-
-};
-
-module.exports =  loginuserMiddleware;
+module.exports = loginuserMiddleware;
