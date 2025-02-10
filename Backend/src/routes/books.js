@@ -32,7 +32,7 @@ route.post("/newbook",bookMiddleware, async (req,res)=>{
 })
 
 
-route.get("/getbook/:token",bookMiddleware, async (req, res)=>{
+route.get("/getbook",bookMiddleware, async (req, res)=>{
 
     try {
 
@@ -80,13 +80,10 @@ route.put("/updatebook",bookMiddleware, async (req,res)=>{
 
     }
 
-   
-
-
 })
 
 
-route.get("/getbookdetail/:id/:token", bookMiddleware, async (req, res)=>{
+route.get("/getbookdetail/:id", bookMiddleware, async (req, res)=>{
 
     var id = req.params.id;
 
@@ -99,7 +96,7 @@ route.get("/getbookdetail/:id/:token", bookMiddleware, async (req, res)=>{
 })
 
 
-route.delete("/deletebook/:id/:token", bookMiddleware , async (req, res)=>{
+route.delete("/deletebook/:id", bookMiddleware , async (req, res)=>{
 
     try{
 

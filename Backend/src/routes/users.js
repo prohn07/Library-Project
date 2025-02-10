@@ -4,9 +4,12 @@ var userModel = require("../model/usermodel.js")
 
 var jwt = require("jsonwebtoken")
 
-var secretkey = "qwerty";
+var secretkey = "qwerty"
 
-var loginuserMiddleware = require("../middleware/loginuserMiddleware.js")
+var key = "rohan";
+
+var loginuserMiddleware = require("../middleware/loginuserMiddleware.js");
+const bookMiddleware = require("../middleware/bookMiddleware.js");
 
 var route = express.Router();
 
@@ -53,5 +56,12 @@ route.post("/loginuser",loginuserMiddleware, async (req,res)=>{
 
 })
 
-module.exports = {route, secretkey};
+route.get("/authenticate",bookMiddleware,  (req,res)=>{
+
+       res.send("success");
+
+
+})
+
+module.exports = {route, key}
 

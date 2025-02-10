@@ -1,40 +1,33 @@
 import React from 'react'
 import "./updatebook.css"
 import axios from 'axios';
+import { axiosAuth } from '../../utils/axios';
 
 function Updatebook() {
 
   function fnupdatebook() {
 
-    if(document.querySelector("#bookid").value==="") {
+    var id= document.querySelector("#bookid").value;
+    var Title= document.querySelector("#title1").value;
+    var Author= document.querySelector("#author1").value;
+    var Description= document.querySelector("#description1").value;
 
-      alert("Please enter Book ID");
+    if(!id || !Title || !Author || !Description) {
 
-    }else if(document.querySelector("#title1").value==="") {
-
-      alert("Please enter Title field");
-
-    }else if(document.querySelector("#author1").value==="") {
-
-      alert("Please enter Author field");
-
-    }else if(document.querySelector("#description1").value==="") {
-
-      alert("Please enter description");
+      alert("Please enter all fileds");
 
     }else{
 
       var updatedbookdata = {
 
-        id: document.querySelector("#bookid").value,
-        Title: document.querySelector("#title1").value,
-        Author: document.querySelector("#author1").value,
-        Description: document.querySelector("#description1").value,
-        token: localStorage.getItem("token")
+        id: id,
+        Title: Title,
+        Author: Author,
+        Description: Description
 
       }
 
-      axios.put("http://localhost:8888/book/updatebook", updatedbookdata).then((res)=>{
+      axiosAuth.put("/book/updatebook", updatedbookdata).then((res)=>{
 
         if(res.data.ok) {
 

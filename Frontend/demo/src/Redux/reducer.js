@@ -6,6 +6,10 @@ function reducer(state=initialdata , action) {
 
         state = {...state, isloggedin:action.data}
         
+    }else if(action.type==="loggedout") {
+        
+
+        state={...state, isloggedin:action.data}
     }
 
     

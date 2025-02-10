@@ -1,44 +1,46 @@
 import React from 'react'
 import "./Addbook.css"
 import axios from "axios"
+import { axiosAuth } from '../../utils/axios';
+
 
 function Addbook() {
 
-  
-
   function fnaddbook() {
 
-    if(document.querySelector("#title").value===""){
+        var Title = document.querySelector("#title").value;
 
-      alert("please enter Book Title")
+        var Author = document.querySelector("#author").value;
 
-    }else if(document.querySelector("#author").value==="") {
+        var Description = document.querySelector("#description").value;
 
-      alert("please enter Author Name")
+        var token = localStorage.getItem("token")
 
-    }else if(document.querySelector("#description").value==="") {
 
-      alert("please enter description")
+
+    if( !Title || !Author || !Description){
+
+      alert("please enter all fields")
 
     }else{
 
       var newbook = {
 
-        Title:document.querySelector("#title").value,
-        Author:document.querySelector("#author").value,
-        Description:document.querySelector("#description").value,
-        token:localStorage.getItem("token")
+        Title: Title,
+        Author: Author,
+        Description: Description
 
       }
 
-      axios.post("http://localhost:8888/book/newbook", newbook).then((res)=>{
+      
+      console.log(token);
+
+      axiosAuth.post("/book/newbook", newbook ).then((res)=>{
 
         if(res.data.ok) {
 
-         alert(res.data.result)
+        alert(res.data.result)
          
-         
-
         }else{
 
           alert(res.data.result)

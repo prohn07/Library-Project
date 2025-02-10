@@ -1,57 +1,37 @@
 import React from 'react'
 import ("./registration.css")
 import { Link } from 'react-router-dom'
-import axios from 'axios'
+import { axiosNoAuth } from '../../utils/axios'
 import { useState, useEffect } from 'react'
 
 function Registration() {
 
     var [state, setState] = useState({username:"", password:"" , email:"", fullname:""})
 
-    useEffect(()=>{
-
-        localStorage.removeItem("token"); 
-        
-    
-      });
-
     function fnpost() {
 
-        if(document.querySelector("#username").value==="") {
+        var username= document.querySelector("#username").value;
+        var password= document.querySelector("#password").value;
+        var email= document.querySelector("#email").value;
+        var name= document.querySelector("#name").value;
 
-            alert("please enter username")
+        if(!username || !password || !email || !name) {
+
+            alert("please enter all fields");
 
 
         }else{
 
-             if(document.querySelector("#password").value==="") {
-
-                alert("please enter password")
-
-             }else{
-
-                if(document.querySelector("#email").value==="") {
-
-                    alert("please enter email")
-
-                }else{
-
-                    if(document.querySelector("#name").value==="") {
-
-                        alert("please enter fullname")
-
-                    }else{
-
-                        var data = {
-                            username:document.querySelector("#username").value,
-                            password:document.querySelector("#password").value,
-                            email:document.querySelector("#email").value,
-                            name:document.querySelector("#name").value,
+            var data = {
+                            username: username,
+                            password: password,
+                            email: email,
+                            name: name
                 
                         }
 
                        
-                        axios.post("http://localhost:8888/user/newuser", data).then((res)=>{
+                        axiosNoAuth.post("/user/newuser", data).then((res)=>{
                             
                                 alert(res.data.result)
                             
@@ -61,20 +41,20 @@ function Registration() {
                         })
                         
                 
-                        document.querySelector("#username").value = "";
-                        document.querySelector("#password").value = "";
-                        document.querySelector("#email").value = "";
-                        document.querySelector("#name").value = "";
+                        document.querySelector("#username").value = null;
+                        document.querySelector("#password").value = null;
+                        document.querySelector("#email").value = null;
+                        document.querySelector("#name").value = null;
                 
                     }
 
                     }
 
-                }
+                
 
-             }
+             
 
-        }
+        
 
 
         

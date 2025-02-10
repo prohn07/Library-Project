@@ -1,22 +1,15 @@
 import {useEffect} from 'react'
 import "./Login.css"
 import { Link, useNavigate } from 'react-router-dom'
-import axios from "axios";
+import { axiosNoAuth } from '../../utils/axios';
 import { useDispatch, useSelector } from 'react-redux';
 
 
 function Login() {
   
-  useEffect(()=>{
-
-    localStorage.removeItem("token"); 
-    
-
-  });
-
   var dispatch = useDispatch();
 
-  var navigate = useNavigate();
+  
   
   function fnlogin() {
 
@@ -26,12 +19,11 @@ function Login() {
 
     }
 
-    axios.post("http://localhost:8888/user/loginuser", data).then((res)=>{
+    axiosNoAuth.post("/user/loginuser", data).then((res)=>{
 
       if(res.data.ok) {
 
         alert(res.data.result)
-        navigate("/");
         localStorage.setItem("token",res.data.token)
         dispatch({type:"loggedin", data:true})
         

@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react'
 import "./Bookdetail.css"
 import { Link, useParams } from 'react-router-dom';
-import axios from 'axios';
+import { axiosAuth } from '../../utils/axios';
 
 function Bookdetail() {
 
@@ -11,7 +11,7 @@ function Bookdetail() {
 
     useEffect(()=>{
 
-        axios.get(`http://localhost:8888/book/getbookdetail/${id}/${localStorage.getItem("token")}`).then((res)=>{
+        axiosAuth.get(`/book/getbookdetail/${id}`).then((res)=>{
               
             if(res.data.ok) {
 

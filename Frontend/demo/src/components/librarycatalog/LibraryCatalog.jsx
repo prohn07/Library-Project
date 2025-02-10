@@ -34,19 +34,19 @@ function LibraryCatalog() {
 
               <div className='carousel-item active' data-bs-interval="3000">
 
-                <img height={"700px"} width={"100%"} src='https://images.unsplash.com/photo-1521587760476-6c12a4b040da?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bGlicmFyeXxlbnwwfHwwfHx8MA%3D%3D'/>
+                <img height={"600px"} width={"100%"} src='https://images.unsplash.com/photo-1521587760476-6c12a4b040da?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bGlicmFyeXxlbnwwfHwwfHx8MA%3D%3D'/>
 
               </div>
 
               <div className='carousel-item' data-bs-interval="3000">
                    
-                <img height={"700px"} width={"100%"} src="https://media.istockphoto.com/id/1498878143/photo/book-stack-and-open-book-on-the-desk-in-modern-public-library.webp?b=1&s=612x612&w=0&k=20&c=VNyPBKIS8zq_58gLSa3fnpHq1DRVvjdZHzW4fGPcIb8="/>
+                <img height={"600px"} width={"100%"} src="https://media.istockphoto.com/id/1498878143/photo/book-stack-and-open-book-on-the-desk-in-modern-public-library.webp?b=1&s=612x612&w=0&k=20&c=VNyPBKIS8zq_58gLSa3fnpHq1DRVvjdZHzW4fGPcIb8="/>
 
               </div>
 
               <div className='carousel-item' data-bs-interval="3000">
 
-              <img height={"700px"} width={"100%"} src="https://media.istockphoto.com/id/505551939/photo/library.jpg?s=612x612&w=0&k=20&c=lGwjpaVR2__plgaEeRiLZ0n1up16Zm3PW6zlR4paabI="/>
+              <img height={"600px"} width={"100%"} src="https://media.istockphoto.com/id/505551939/photo/library.jpg?s=612x612&w=0&k=20&c=lGwjpaVR2__plgaEeRiLZ0n1up16Zm3PW6zlR4paabI="/>
 
               </div>
 

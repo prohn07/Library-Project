@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react'
 import "./Booklist.css"
-import axios from "axios";
+import { axiosAuth } from '../../utils/axios'
 import {Link} from "react-router-dom"
 
 
@@ -10,7 +10,7 @@ function Booklist() {
 
 
 
-  useEffect(()=>{axios.get(`http://localhost:8888/book/getbook/${localStorage.getItem("token")}`).then((res)=>{
+  useEffect(()=>{axiosAuth.get("/book/getbook").then((res)=>{
      
     if(res.data.ok){
 
@@ -28,7 +28,7 @@ function Booklist() {
 
     
 
-    axios.delete(`http://localhost:8888/book/deletebook/${id}/${localStorage.getItem("token")}`).then((res)=>{
+    axiosAuth.delete(`http://localhost:8888/book/deletebook/${id}`).then((res)=>{
 
       if(res.data.ok){
 
